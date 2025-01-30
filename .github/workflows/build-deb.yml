@@ -15,15 +15,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.10"
 
       - name: Install build dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential:native python3-all debhelper dh-python fakeroot
           pip install --upgrade pip
-          pip install stdeb wheel
+          pip install stdeb wheel setuptools
 
       - name: Build DEB package
         run: |
+          export SETUPTOOLS_USE_DISTUTILS=stdlib
           python setup.py --command-packages=stdeb.command bdist_deb
 
       - name: Upload DEB artifact

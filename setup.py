@@ -12,6 +12,7 @@ setup(
     },
     # If you have e.g. a license file, you can declare it here, or in MANIFEST.in
     description='A PyQt application that tracks Firefox usage time',
+    long_description=open('README.md').read(),
     author='Jiří Bednář',
     author_email='jbednar@isocta.com',
     url='https://github.com/programagor/firefox_usage_timer',
